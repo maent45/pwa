@@ -1,6 +1,6 @@
 /*--- API ---*/
 
-$.getJSON("https://newsapi.org/v1/articles?source=the-guardian-au&sortBy=top&apiKey=f639fcbf28744c87a2a59c86cfc28a14", function(data){
+$.getJSON("https://newsapi.org/v1/articles?source=nfl-news&sortBy=top&apiKey=f639fcbf28744c87a2a59c86cfc28a14", function(data){
 
   console.log(data);
 
@@ -10,7 +10,8 @@ $.getJSON("https://newsapi.org/v1/articles?source=the-guardian-au&sortBy=top&api
       "<li>"
       + "<h3>" + data.articles[i].title + "</h3>"
       + "<img src=" + data.articles[i].urlToImage + ">"
-      + "<i>Author: " + data.articles[i].author + "</i>"
+      + "<i>Author: " + data.articles[i].author + "</i></br>"
+      + "<i>Published on: " + data.articles[i].publishedAt + "</i></br>"
       + "<span>" + data.articles[i].description + "</span>"
       + "<a href=" + data.articles[i].url + " target='_blank'> ...read more</a>"
       + "</li>"
