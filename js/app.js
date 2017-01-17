@@ -1,6 +1,6 @@
 /*--- API ---*/
 
-$.getJSON("https://newsapi.org/v1/articles?source=nfl-news&sortBy=top&apiKey=f639fcbf28744c87a2a59c86cfc28a14", function(data){
+$.getJSON("https://newsapi.org/v1/articles?source=time&sortBy=top&apiKey=f639fcbf28744c87a2a59c86cfc28a14", function(data){
 
   console.log(data);
 
