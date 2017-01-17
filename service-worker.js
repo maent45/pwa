@@ -1,5 +1,5 @@
 // set up files to cache
-var cacheName = 'v1';
+var cacheName = 'v2';
 var cacheFiles = [
   './',
   './index.html',

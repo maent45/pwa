@@ -1,9 +1,31 @@
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+header {
+  background: #055A8A;
+  color: white;
+  padding: 5px 10px;
+}
+
 img {
   width: 100%;
 }
 
 ul {
   list-style-type: none;
-  padding: 0px;
+  padding: 0px 10px;
   margin: 0px;
+}
+
+li {
+    padding: 5px 0px;
+    margin: 10px 0px;
+    border-bottom: 1px solid gray;
+}
+
+a {
+  text-decoration: none;
 }
