@@ -2,7 +2,7 @@
 
 $.getJSON("https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=f639fcbf28744c87a2a59c86cfc28a14", function(data){
 
-  console.log(data);
+  // console.log(data);
 
   for (var i = 0; i < 10; i++) {
 
