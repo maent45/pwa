@@ -1,0 +1,22 @@
+{
+  "name": "pwa-maen.accdev.co.nz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maent45/pwa.git"
+  },
+  "author": "maent45",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maent45/pwa/issues"
+  },
+  "homepage": "https://github.com/maent45/pwa",
+  "devDependencies": {
+    "sw-precache": "^4.3.0"
+  }
+}
