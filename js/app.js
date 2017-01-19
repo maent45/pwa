@@ -52,7 +52,6 @@ function getWeather() {
       var temp_fahrenheit = response.query.results.channel.item.condition.temp;
       
       console.log("weather response", response);
-      console.log("current weather: ", toCelsius(temp_fahrenheit));
       
       $('.weather_container').append(
         response.query.results.channel.location.city
@@ -63,13 +62,12 @@ function getWeather() {
       // loop through forecast
       for (var i = 0; i < 10; i++) {
         
-        console.log("forecst: ",response.query.results.channel.item.forecast[i].text);
-        
         $('.forecast_container ul').append(
-          "<li>" 
-          + response.query.results.channel.item.forecast[i].day
-          + ": "
-          + response.query.results.channel.item.forecast[i].text 
+          "<li>"
+          + "<h4>" + response.query.results.channel.item.forecast[i].day + "</h4>"
+          + response.query.results.channel.item.forecast[i].text
+          + "<i> high: " + Math.ceil(toCelsius(response.query.results.channel.item.forecast[i].high)) + "&deg;C </i>"
+          + "<i> low: " + Math.ceil(toCelsius(response.query.results.channel.item.forecast[i].low)) + "&deg;C </i>"
           + "</li>"
         );
         
@@ -82,7 +80,7 @@ function getWeather() {
 
 $('.weather_container').on('click', function() {
   
-  $('.forecast_container').slideToggle();
+  $('.forecast_container').stop().slideToggle();
   
 });
 
