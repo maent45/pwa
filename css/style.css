@@ -29,3 +29,7 @@ li {
 a {
   text-decoration: none;
 }
+
+.forecast_container {
+  display: none;
+}

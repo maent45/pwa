@@ -54,12 +54,37 @@ function getWeather() {
       console.log("weather response", response);
       console.log("current weather: ", toCelsius(temp_fahrenheit));
       
-      $('.weather_container').append(toCelsius(temp_fahrenheit));
+      $('.weather_container').append(
+        response.query.results.channel.location.city
+        + " "
+        + Math.ceil(toCelsius(temp_fahrenheit)) + "&deg;C"
+      );
+      
+      // loop through forecast
+      for (var i = 0; i < 10; i++) {
+        
+        console.log("forecst: ",response.query.results.channel.item.forecast[i].text);
+        
+        $('.forecast_container ul').append(
+          "<li>" 
+          + response.query.results.channel.item.forecast[i].day
+          + ": "
+          + response.query.results.channel.item.forecast[i].text 
+          + "</li>"
+        );
+        
+      }
       
     }
   });
   
 }
+
+$('.weather_container').on('click', function() {
+  
+  $('.forecast_container').slideToggle();
+  
+});
 
 getNewsArticles();
 getWeather();
