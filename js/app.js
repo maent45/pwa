@@ -1,67 +1,68 @@
 /*--- API ---*/
 
-// $.getJSON("https://newsapi.org/v1/articles?source=time&sortBy=top&apiKey=f639fcbf28744c87a2a59c86cfc28a14", function(data){
-//
-//   var data_length = data.articles.length;
-//
-//   console.log("array size: " + data_length);
-//
-//   for (var i = 0; i < data_length; i++) {
-//
-//     $(".article-list").append(
-//       "<li>"
-//       + "<h3>" + data.articles[i].title + "</h3>"
-//       + "<img src=" + data.articles[i].urlToImage + ">"
-//       + "<i>Author: " + data.articles[i].author + "</i></br>"
-//       + "<i>Published on: " + data.articles[i].publishedAt + "</i></br>"
-//       + "<span>" + data.articles[i].description + "</span>"
-//       + "<a href=" + data.articles[i].url + " target='_blank'> ...read more</a>"
-//       + "</li>"
-//
-//     );
-//
-//   }
-//
-// });
-
 var news_api_res = "https://newsapi.org/v1/articles?source=time&sortBy=top&apiKey=f639fcbf28744c87a2a59c86cfc28a14";
-var weather_api_res = "http://api.openweathermap.org/data/2.5/weather?q=Wellington,nz&appid=aa3dff511a90b8edad0726dc2b25ad54";
+var weather_api_res = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22wellington%2C%20nz%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
 
-$.when(
+/*--- GET NEWS ---*/
+function getNewsArticles() {
+  
+  $.ajax({
+    dataType: "json",
+    url: news_api_res,
+    success: function(response) {
+      
+      var news_array_length = response.articles.length;
+      
+      // loop through news items
+      for (var i = 0; i < news_array_length; i++) {
+        
+        $(".article-list").append(
+          "<li>"
+          + "<h3>" + response.articles[i].title + "</h3>"
+          + "<img src=" + response.articles[i].urlToImage + ">"
+          + "<i>Author: " + response.articles[i].author + "</i></br>"
+          + "<i>Published on: " + response.articles[i].publishedAt + "</i></br>"
+          + "<span>" + response.articles[i].description + "</span>"
+          + "<a href=" + response.articles[i].url + " target='_blank'> ...read more</a>"
+          + "</li>"
+        );
+        
+      }
+      
+      console.log("news response", response);
+      
+    }
+  });
+  
+}
 
-  // get news articles and weather from their endpoints
-  // $.get(news_api_res),
-  $.get(weather_api_res)
+/*--- GET WEATHER ---*/
+function getWeather() {
+  
+  $.ajax({
+    dataType: "json",
+    url: weather_api_res,
+    success: function(response) {
+      
+      // convert fahrenheit to celcius
+      function toCelsius(f) {
+          return (5/9) * (f-32);
+      }
+      
+      var temp_fahrenheit = response.query.results.channel.item.condition.temp;
+      
+      console.log("weather response", response);
+      console.log("current weather: ", toCelsius(temp_fahrenheit));
+      
+      $('.weather_container').append(toCelsius(temp_fahrenheit));
+      
+    }
+  });
+  
+}
 
-).then(function(weather_data) {
-
-  // show weather data
-  console.log("WEATHER DATA: ", weather_data.name);
-
-  // var news_data_length = news_data.articles.length;
-
-  // loop through weather array
-  // for (var i = 0; i < news_data_length; i++) {
-  //
-  //   $(".article-list").append(
-  //     "<li>"
-  //     + "<h3>" + news_data.articles[i].title + "</h3>"
-  //     + "<img src=" + news_data.articles[i].urlToImage + ">"
-  //     + "<i>Author: " + news_data.articles[i].author + "</i></br>"
-  //     + "<i>Published on: " + news_data.articles[i].publishedAt + "</i></br>"
-  //     + "<span>" + news_data.articles[i].description + "</span>"
-  //     + "<a href=" + news_data.articles[i].url + " target='_blank'> ...read more</a>"
-  //     + "</li>"
-  //
-  //   );
-  //
-  // }
-
-  // return;
-
-}).fail(function(err) {
-  console.log('Something went wrong ' ,err);
-});
+getNewsArticles();
+getWeather();
 
 /*--- SERVICE WORKER CONFIG ---*/
 if ('serviceWorker' in navigator) {
