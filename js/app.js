@@ -87,20 +87,6 @@ $('.weather_container').on('click', function() {
 getNewsArticles();
 getWeather();
 
-/*--- SERVICE WORKER CONFIG ---*/
-// if ('serviceWorker' in navigator) {
-
-//   navigator.serviceWorker
-//     .register('./service-worker.js', {scope: './'})
-//     .then(function(registration) {
-//       console.log('Service Worker Registered!');
-//     })
-//     .catch(function(err) {
-//       console.log('Service worker failed to register :(', err);
-//     })
-
-// }
-
 /*--- SW-PRECACHE SERVICE WORKER CONFIG ---*/
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js').then(function() { 
