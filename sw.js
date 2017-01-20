@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["./css/style.css","2dd351ee503b873015eb3fbe5a3cb116"],["./images/128.png","879e0579d6170af8962685b2328de8b2"],["./images/144.png","6454fc6ef16e03d2a88abe214c352be2"],["./images/152.png","1187fed835d8720c22ca441bcc2c0926"],["./images/192.png","c5874d44581e65c7e9457e2c90af6460"],["./images/256.png","78ac7e597cfdd91f56dfda2ad4d86d31"],["./index.html","47199f0776773c2c4a0de5a4b63c510a"],["./js/app.js","c0e1fb88a89a135df77e2b8233469118"]];
+var precacheConfig = [["./css/style.css","2dd351ee503b873015eb3fbe5a3cb116"],["./images/128.png","879e0579d6170af8962685b2328de8b2"],["./images/144.png","6454fc6ef16e03d2a88abe214c352be2"],["./images/152.png","1187fed835d8720c22ca441bcc2c0926"],["./images/192.png","c5874d44581e65c7e9457e2c90af6460"],["./images/256.png","78ac7e597cfdd91f56dfda2ad4d86d31"],["./index.html","187ef40de0a6ac84de1b7c0aea104be1"],["./js/app.js","c0e1fb88a89a135df77e2b8233469118"]];
 var cacheName = 'sw-precache-v2--' + (self.registration ? self.registration.scope : '');
 
 
@@ -254,6 +254,7 @@ self.addEventListener('fetch', function(event) {
 
 toolbox.router.get(/^https:\/\/query\.yahooapis\.com\/v1/, toolbox.fastest, {});
 toolbox.router.get(/^https:\/\/newsapi\.org\/v1\/articles/, toolbox.networkFirst, {"cache":{"name":"articles-cache"}});
+toolbox.router.get(/^https:\/\/timedotcom\.files\.wordpress\.com/, toolbox.networkFirst, {"cache":{"name":"articles-img-cache"}});
 
 
 
