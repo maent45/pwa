@@ -5,7 +5,7 @@ body {
 }
 
 header {
-  background: #055A8A;
+  background: #E74C3C;
   color: white;
   padding: 5px 10px;
 }
@@ -14,16 +14,27 @@ img {
   width: 100%;
 }
 
+h3, i, p, span, a {
+  text-shadow: 3px 2px 1px rgb(49, 44, 44);
+  color: white;
+}
+
 ul {
   list-style-type: none;
-  padding: 0px 10px;
+  padding: 0px;
   margin: 0px;
 }
 
-li {
-    padding: 5px 0px;
-    margin: 10px 0px;
-    border-bottom: 1px solid gray;
+.article-list li {
+  position: relative;
+  padding: 10px;
+  color: #222;
+  background-size: cover;
+}
+
+.article-list div {
+  background: rgba(49, 44, 44, 0.5);
+  padding: 10px;
 }
 
 h4 {
@@ -34,6 +45,28 @@ a {
   text-decoration: none;
 }
 
+.weather_container::hover {
+  cursor: pointer;
+}
+
+.weather_container {
+  background: #2980B9;
+  padding: 10px;
+  color: white;
+  font-weight: 600;
+}
+
 .forecast_container {
   display: none;
+}
+
+.forecast_container ul {
+  background: #3498DB;
+  color: white;
+}
+
+.forecast_container li {
+  margin: 0px;
+  padding: 10px;
+  border-bottom: 0px;
 }

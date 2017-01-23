@@ -15,15 +15,16 @@ function getNewsArticles() {
       
       // loop through news items
       for (var i = 0; i < news_array_length; i++) {
-        
+
         $(".article-list").append(
-          "<li>"
-          + "<h3>" + response.articles[i].title + "</h3>"
-          + "<img src=" + response.articles[i].urlToImage + ">"
+          "<li style='background-image: url("+response.articles[i].urlToImage+")'>"
+          + "<div>"
+          + "<h3>" + response.articles[i].title + "</h3></br></br>"
           + "<i>Author: " + response.articles[i].author + "</i></br>"
           + "<i>Published on: " + response.articles[i].publishedAt + "</i></br>"
           + "<span>" + response.articles[i].description + "</span>"
           + "<a href=" + response.articles[i].url + " target='_blank'> ...read more</a>"
+          + "</div>"
           + "</li>"
         );
         
