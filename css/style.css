@@ -14,8 +14,8 @@ img {
   width: 100%;
 }
 
-h3, i, p, span, a {
-  text-shadow: 3px 2px 1px rgb(49, 44, 44);
+h3 {
+  text-shadow: 2px 1px 0px rgb(49, 44, 44);
   color: white;
 }
 
@@ -27,14 +27,33 @@ ul {
 
 .article-list li {
   position: relative;
-  padding: 10px;
   color: #222;
-  background-size: cover;
+  
 }
 
-.article-list div {
+.article-list-inner {
+  background-size: cover !important;
   background: rgba(49, 44, 44, 0.5);
   padding: 10px;
+  height: 50vh;
+  position: relative;
+}
+
+.article-list-inner h3 {
+  text-shadow: 2px 1px 0px rgb(49, 44, 44);
+  background: rgba(49, 44, 44, 0.5);
+  color: white;
+  padding: 10px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  margin: 10px;
+}
+
+.article-list-inner-desc {
+  padding: 10px;
+  background: #3498DB;
+  color: white;
 }
 
 h4 {
@@ -43,6 +62,7 @@ h4 {
 
 a {
   text-decoration: none;
+  color: #222;
 }
 
 .weather_container::hover {

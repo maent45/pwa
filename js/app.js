@@ -17,14 +17,17 @@ function getNewsArticles() {
       for (var i = 0; i < news_array_length; i++) {
 
         $(".article-list").append(
-          "<li style='background-image: url("+response.articles[i].urlToImage+")'>"
-          + "<div>"
-          + "<h3>" + response.articles[i].title + "</h3></br></br>"
-          + "<i>Author: " + response.articles[i].author + "</i></br>"
-          + "<i>Published on: " + response.articles[i].publishedAt + "</i></br>"
-          + "<span>" + response.articles[i].description + "</span>"
-          + "<a href=" + response.articles[i].url + " target='_blank'> ...read more</a>"
+          "<li>"
+          + "<div class='article-list-inner' style='background-image: url("+response.articles[i].urlToImage+")'>"
+            + "<h3>" + response.articles[i].title + "</h3></br></br>"
           + "</div>"
+          
+          + "<div class='article-list-inner-desc'>"
+            + "<i>Author: " + response.articles[i].author + "</i></br>"
+            + "<i>Published on: " + response.articles[i].publishedAt + "</i></br>"
+            + "<span>" + response.articles[i].description + "</span>"
+            + "<a href=" + response.articles[i].url + " target='_blank'> ...read more</a>"
+            + "</div>"
           + "</li>"
         );
         
