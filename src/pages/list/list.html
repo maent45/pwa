@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content>
+  
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
       <ion-icon name="{{item.icon}}" item-left></ion-icon>
@@ -18,17 +19,4 @@
     </button>
   </ion-list>
 
-  <ion-card>
-    <img src="http://www.calgary.ca/CA/city-manager/scripts/about-us/webparts/images/ourHistory_retina.jpg"/>
-    <div class="card-title">São Paulo</div>
-    <div class="card-subtitle">41 Listings</div>
-  </ion-card>
-
-  <ion-card>
-    <img src="http://musiccitiessummit.com/wp-content/uploads/chicago-1.jpg"/>
-    <div class="card-title">Amsterdam</div>
-    <div class="card-subtitle">64 Listings</div>
-  </ion-card>
-
-  
 </ion-content>

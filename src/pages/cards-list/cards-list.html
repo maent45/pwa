@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Cards</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    
+    <ion-card *ngFor="let card of cards" (click)="itemClicked($event, card)">
+        <ion-card-content>
+            <ion-card-title>
+                {{card.title}}
+            </ion-card-title>
+            <p>
+                {{card.description}}
+            </p>
+        </ion-card-content>
+    </ion-card>
+    
+</ion-content>
