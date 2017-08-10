@@ -4,6 +4,9 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { CardsDetailPage } from '../cards-detail/cards-detail';
 
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+
 @Component({
     selector: 'page-cards-list',
     templateUrl: 'cards-list.html'
@@ -11,20 +14,40 @@ import { CardsDetailPage } from '../cards-detail/cards-detail';
 
 export class CardsListPage {
     
-    cards: Array<{title: string, description: string}>;
+    cards: any;
     
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
         
-        this.cards = [
+        let endpoint = {
+          query: `
             {
-                title: 'item one',
-                description: 'this is the description field for the very first item of cards.'
+              readRiskCards {
+                edges {
+                  node {
+                    ID
+                    Title
+                    Desc
+                    Image {
+                      url
+                    }
+                  }
+                }
+              }
+            }`
+        };
+        
+        this.http.post('http://riskcards-maen.accdev.co.nz/graphql', endpoint).map(res => res.json()).subscribe(
+            data => {
+                console.log("got it",data);
+                
+                // insert query response into cards array
+                this.cards = data.data.readRiskCards.edges;
+                console.log('new val', this.cards);
             },
-            {
-                title: 'item two',
-                description: 'this is the description field for the very second item of cards.'
+            err => {
+                console.log("Oops!");
             }
-        ];
+        );
         
         for (let i = 0; i < 2; i++) {
             this.cards;

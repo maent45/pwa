@@ -10,13 +10,12 @@
 <ion-content>
     
     <ion-card *ngFor="let card of cards" (click)="itemClicked($event, card)">
+        <img src="{{card.node.Image.url}}"/>
         <ion-card-content>
             <ion-card-title>
-                {{card.title}}
+                {{card.node.Title}}
             </ion-card-title>
-            <p>
-                {{card.description}}
-            </p>
+            <p>{{card.node.Desc}}</p>
         </ion-card-content>
     </ion-card>
     
